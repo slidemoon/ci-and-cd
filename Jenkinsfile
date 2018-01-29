@@ -21,7 +21,7 @@ pipeline {
       steps {
           sh '''sudo /edx/bin/supervisorctl restart edxapp:
                 sleep 10
-                if [ $(sudo /edx/bin/supervisorctl status |grep edxapp: |grep RUNNING  |wc -l) -eq 3 ]; then true; else false; fi
+                if [ $(sudo /edx/bin/supervisorctl status |grep edxapp: |grep RUNNING  |wc -l) -eq 2 ]; then true; else false; fi
              '''
       } 
     } 
