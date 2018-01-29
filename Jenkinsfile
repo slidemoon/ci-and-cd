@@ -6,10 +6,15 @@ pipeline {
     
   }
   stages {
-    stage('changedir') {
+    stage('pull code') {
       steps {
         sh '''cd /edx/app/edxapp/edx-platform/
-              git log
+              git branch
+              sudo git fetch
+              sudo git checkout staging
+              sudo git pull
+              git branch
+              sudo chown -R edxapp:edxapp . 
            '''
       }
     }
