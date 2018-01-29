@@ -1,16 +1,16 @@
 pipeline {
   agent {
     node {
-      label 'master'
+      label 'staging-APP'
     }
     
   }
   stages {
-    stage('sy') {
+    stage('changedir') {
       steps {
-        sh '''echo \'testing\'
-sleep 10
-'''
+        sh '''cd /edx/app/edxapp/edx-platform/
+              git log
+           '''
       }
     }
   }
