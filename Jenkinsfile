@@ -17,19 +17,14 @@ pipeline {
            '''
       }
     }
-    try {
-      stage('restart CMS/LMS') {
+    stage('restart CMS/LMS') {
       steps {
           sh '''sudo /edx/bin/supervisorctl restart edxapp:
                 sleep 10
                 if [ $(sudo /edx/bin/supervisorctl status |grep edxapp: |grep RUNNING  |wc -l) -eq 2 ]; then true; else false; fi
              '''
-        } 
-      }
       } 
-    } catch (err) {
-          echo 'CMS/LMS service down!'
-    }
+    } 
   }
   post {
     success {
