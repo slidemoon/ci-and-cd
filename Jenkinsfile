@@ -18,7 +18,7 @@ pipeline {
       }
     }
     stage('restart CMS/LMS') {
-      steps {
+
         try {
           sh '''sudo /edx/bin/supervisorctl restart edxapp:
                 sleep 10
@@ -27,7 +27,7 @@ pipeline {
         } catch (err) {
           echo 'CMS/LMS service down!'
         }
-      }
+
     }
   }
   post {
