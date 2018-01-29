@@ -2,8 +2,7 @@ pipeline {
   agent {
     node {
       label 'staging-APP'
-    }
-    
+    }    
   }
   stages {
     stage('pull code') {
@@ -30,13 +29,13 @@ pipeline {
         }
       }
     }
-    post {
-      success {
-        echo 'Succeeded!'
-      }
-      failure {
-        echo 'Failed!'
-      }
+  }
+  post {
+    success {
+      echo 'Succeeded!'
+    }
+    failure {
+      echo 'Failed!'
     }
   }
 }
