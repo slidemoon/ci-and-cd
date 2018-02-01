@@ -4,6 +4,9 @@ pipeline {
       label 'staging-APP'
     }    
   }
+  triggers {
+    upstream(upstreamProjects: 'trigger-staging', threshold: hudson.model.Result.SUCCESS)
+  }
   stages {
     stage('pull code') {
       steps {
